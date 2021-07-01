@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import {Header, ItemListFood, ItemValue, Button} from '../../components';
+import {Header, ItemListFood, ItemValue, Button, Gap} from '../../components';
 import {FoodDummy1} from '../../assets';
 
-const OrderSummary = ({navigation}) => {
+const OrderDetail = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Header
@@ -39,17 +39,24 @@ const OrderSummary = ({navigation}) => {
         <ItemValue label="House No." value="A5 Hooks" />
         <ItemValue label="City" value="Denpasar" />
       </View>
+      <View style={styles.content}>
+        <Text style={styles.label}>Order Status: </Text>
+        <ItemValue label="#FM209391" value="Paid" valueColor="#1ABC9C" />
+      </View>
       <View style={styles.button}>
         <Button
-          text="Checkout Now"
+          text="Cancel My Order"
           onPress={() => navigation.replace('SuccessOrder')}
+          color="#D9435E"
+          textColor="white"
         />
       </View>
+      <Gap height={24} />
     </ScrollView>
   );
 };
 
-export default OrderSummary;
+export default OrderDetail;
 
 const styles = StyleSheet.create({
   content: {
@@ -67,6 +74,5 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 24,
     marginTop: 24,
-    marginBottom: 26,
   },
 });

@@ -13,7 +13,10 @@ const FoodDetail = ({navigation}) => {
   return (
     <View style={styles.page}>
       <ImageBackground source={FoodDummy1} style={styles.cover}>
-        <TouchableOpacity style={styles.back} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.back}
+          activeOpacity={0.7}
+          onPress={() => navigation.goBack()}>
           <IcBackWhite />
         </TouchableOpacity>
       </ImageBackground>

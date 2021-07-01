@@ -1,14 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {EmptyOrder, Header, OrderTabSection} from '../../components';
 
-const Order = () => {
+const Order = ({navigation}) => {
+  const [isEmpty, setIsEmpty] = useState(false);
+
   return (
-    <View>
-      <Text>Order</Text>
+    <View style={styles.page}>
+      {isEmpty ? (
+        <EmptyOrder />
+      ) : (
+        <View style={styles.content}>
+          <Header
+            title="Your Orders"
+            subTitle="Wait for the best meal"
+            onBack
+            onPress={() => navigation.goBack()}
+          />
+          <View style={styles.tabContainer}>
+            <OrderTabSection />
+          </View>
+        </View>
+      )}
     </View>
   );
 };
 
 export default Order;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  page: {flex: 1},
+  content: {flex: 1},
+  tabContainer: {
+    flex: 1,
+    marginTop: 24,
+  },
+});

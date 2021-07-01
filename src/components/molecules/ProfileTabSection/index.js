@@ -10,8 +10,8 @@ import {
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {useNavigation} from '@react-navigation/native';
 import {FoodDummy5, FoodDummy6, FoodDummy7} from '../../../assets';
-import Rating from '../Rating';
 import ItemListFood from '../ItemListFood';
+import ItemListMenu from '../ItemListMenu';
 
 const renderTabBar = props => (
   <TabBar
@@ -44,98 +44,47 @@ const renderTabBar = props => (
   />
 );
 
-const NewTaste = () => {
-  const navigation = useNavigation();
-
-  return (
-    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood
-        type="product"
-        rating
-        onPress={() => navigation.navigate('FoodDetail')}
-        image={FoodDummy5}
-        name="Soup Bumil"
-        price="289.000"
-      />
-      <ItemListFood
-        type="product"
-        rating
-        onPress={() => navigation.navigate('FoodDetail')}
-        image={FoodDummy6}
-        name="Chicken"
-        price="4.509.000"
-      />
-      <ItemListFood
-        type="product"
-        rating
-        onPress={() => navigation.navigate('FoodDetail')}
-        image={FoodDummy7}
-        name="Shrimp"
-        price="999.000"
-      />
-    </View>
-  );
-};
-
-const Popular = () => {
+const account = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy6}
-          name="Chicken"
-          price="4.509.000"
-        />
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy5}
-          name="Shrimp"
-          price="999.000"
-        />
+        <ItemListMenu text="Edit Profile" />
+        <ItemListMenu text="Home Address" />
+        <ItemListMenu text="Security" />
+        <ItemListMenu text="Payments" />
       </View>
     </ScrollView>
   );
 };
 
-const Recommended = () => {
+const foodMarket = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy7}
-          name="Soup Bumil"
-          price="289.000"
-        />
+        <ItemListMenu text="Rate App" />
+        <ItemListMenu text="Help Center" />
+        <ItemListMenu text="Privacy & Policy" />
+        <ItemListMenu text="Terms & Conditions" />
       </View>
     </ScrollView>
   );
 };
 
-const HomeTabSection = () => {
+const ProfileTabSection = () => {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: '1', title: 'New Taste'},
-    {key: '2', title: 'Popular'},
-    {key: '3', title: 'Recommended'},
+    {key: '1', title: 'Account'},
+    {key: '2', title: 'FoodMarket'},
   ]);
 
   const renderScene = SceneMap({
-    1: NewTaste,
-    2: Popular,
-    3: Recommended,
+    1: account,
+    2: foodMarket,
   });
 
   return (
@@ -150,6 +99,6 @@ const HomeTabSection = () => {
   );
 };
 
-export default HomeTabSection;
+export default ProfileTabSection;
 
 const styles = StyleSheet.create({});
