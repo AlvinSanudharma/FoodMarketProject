@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
+  Dimensions,
   Image,
   ScrollView,
 } from 'react-native';
@@ -19,8 +19,8 @@ const renderTabBar = props => (
     indicatorStyle={{
       backgroundColor: '#020202',
       height: 3,
-      width: '0.1%',
-      marginLeft: '0.1%',
+      width: '15%',
+      marginLeft: '3%',
     }}
     style={{
       backgroundColor: 'white',
@@ -110,8 +110,9 @@ const pastOrders = () => {
   );
 };
 
+const initialLayout = {width: Dimensions.get('window').width};
+
 const OrderTabSection = () => {
-  const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: '1', title: 'In Progress'},
@@ -129,7 +130,7 @@ const OrderTabSection = () => {
       navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      initialLayout={layout}
+      initialLayout={initialLayout}
       style={{backgroundColor: 'white'}}
     />
   );

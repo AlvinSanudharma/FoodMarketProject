@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
+  Dimensions,
   Image,
   ScrollView,
 } from 'react-native';
@@ -19,8 +19,8 @@ const renderTabBar = props => (
     indicatorStyle={{
       backgroundColor: '#020202',
       height: 3,
-      width: '0.1%',
-      marginLeft: '0.1%',
+      width: '15%',
+      marginLeft: '3%',
     }}
     style={{
       backgroundColor: 'white',
@@ -81,26 +81,24 @@ const Popular = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy6}
-          name="Chicken"
-          price="4.509.000"
-        />
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy5}
-          name="Shrimp"
-          price="999.000"
-        />
-      </View>
-    </ScrollView>
+    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ItemListFood
+        type="product"
+        rating
+        onPress={() => navigation.navigate('FoodDetail')}
+        image={FoodDummy6}
+        name="Chicken"
+        price="4.509.000"
+      />
+      <ItemListFood
+        type="product"
+        rating
+        onPress={() => navigation.navigate('FoodDetail')}
+        image={FoodDummy5}
+        name="Shrimp"
+        price="999.000"
+      />
+    </View>
   );
 };
 
@@ -108,23 +106,22 @@ const Recommended = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-        <ItemListFood
-          type="product"
-          rating
-          onPress={() => navigation.navigate('FoodDetail')}
-          image={FoodDummy7}
-          name="Soup Bumil"
-          price="289.000"
-        />
-      </View>
-    </ScrollView>
+    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ItemListFood
+        type="product"
+        rating
+        onPress={() => navigation.navigate('FoodDetail')}
+        image={FoodDummy7}
+        name="Soup Bumil"
+        price="289.000"
+      />
+    </View>
   );
 };
 
+const initialLayout = {width: Dimensions.get('window').width};
+
 const HomeTabSection = () => {
-  const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: '1', title: 'New Taste'},
@@ -144,7 +141,7 @@ const HomeTabSection = () => {
       navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      initialLayout={layout}
+      initialLayout={initialLayout}
       style={{backgroundColor: 'white'}}
     />
   );
