@@ -3,10 +3,6 @@ const initialRegisterState = {
   email: '',
   password: '',
   password_confirmation: '',
-  address: '',
-  city: '',
-  houseNumber: '',
-  phoneNumber: '',
 };
 
 export function registerReducer(state = initialRegisterState, action) {
@@ -18,14 +14,6 @@ export function registerReducer(state = initialRegisterState, action) {
         email: action.value.email,
         password: action.value.password,
         password_confirmation: action.value.password,
-      };
-    case 'SET_ADDRESS':
-      return {
-        ...state,
-        address: action.value.address,
-        city: action.value.city,
-        houseNumber: action.value.houseNumber,
-        phoneNumber: action.value.phoneNumber,
       };
     default:
       return state;
