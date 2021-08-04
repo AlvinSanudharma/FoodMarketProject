@@ -1,8 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import Axios from 'axios';
+import {setLoading, signUpAction} from '../../redux/action';
 import {Header, TextInput, Gap, Button, Select} from '../../components';
-import {useForm} from '../../utils';
+import {useForm, showMessage} from '../../utils';
 
 const SignUpAddress = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -12,7 +14,7 @@ const SignUpAddress = ({navigation}) => {
     city: 'Denpasar',
   });
   const dispatch = useDispatch();
-  const registerReducer = useSelector(state => state.registerReducer);
+  const {registerReducer, photoReducer} = useSelector(state => state);
 
   const onSubmit = () => {
     const data = {
@@ -20,9 +22,10 @@ const SignUpAddress = ({navigation}) => {
       ...registerReducer,
     };
 
-    console.info(data);
-    // navigation.replace('SuccessSignUp')
+    dispatch(setLoading(true));
+    dispatch(signUpAction(data, photoReducer, navigation));
   };
+
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <View style={styles.page}>
