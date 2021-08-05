@@ -12,6 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import {FoodDummy5, FoodDummy6, FoodDummy7} from '../../../assets';
 import ItemListFood from '../ItemListFood';
 import ItemListMenu from '../ItemListMenu';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const renderTabBar = props => (
   <TabBar
@@ -46,6 +47,14 @@ const renderTabBar = props => (
 
 const account = () => {
   const navigation = useNavigation();
+  const signOut = () => {
+    AsyncStorage.multiRemove(['userProfile', 'token']).then(() => {
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'SignIn'}],
+      });
+    });
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -54,6 +63,7 @@ const account = () => {
         <ItemListMenu text="Home Address" />
         <ItemListMenu text="Security" />
         <ItemListMenu text="Payments" />
+        <ItemListMenu text="Logout" onPress={signOut} />
       </View>
     </ScrollView>
   );
