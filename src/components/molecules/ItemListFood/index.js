@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {FoodDummy1} from '../../../assets';
+import Number from '../Number';
 import Rating from '../Rating';
 
 const ItemListFood = ({
@@ -21,9 +22,10 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.name}>{name}</Text>
-              <Text style={styles.price}>IDR {price}</Text>
+              <Number number={price} />
+              {/* <Text style={styles.price}>IDR {price}</Text> */}
             </View>
-            <Rating rating={rating} />
+            <Rating number={rating} />
           </>
         );
         break;
@@ -74,7 +76,7 @@ const ItemListFood = ({
               <Text style={styles.name}>{name}</Text>
               <Text style={styles.price}>IDR {price}</Text>
             </View>
-            <Rating rating={rating} />
+            <Rating number={rating} />
           </>
         );
         break;
