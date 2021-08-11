@@ -11,13 +11,13 @@ import {
 import {FoodCard, Gap, HomeTabSection, HomeProfile} from '../../components';
 import {getFoodData} from '../../redux/action';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {food} = useSelector(state => state.homeReducer);
 
   useEffect(() => {
     dispatch(getFoodData());
-  }, []);
+  }, [navigation]);
 
   return (
     <ScrollView>
@@ -34,6 +34,7 @@ const Home = () => {
                     image={{uri: itemFood.picturePath}}
                     name={itemFood.name}
                     rating={itemFood.rate}
+                    onPress={() => navigation.navigate('FoodDetail', itemFood)}
                   />
                 );
               })}

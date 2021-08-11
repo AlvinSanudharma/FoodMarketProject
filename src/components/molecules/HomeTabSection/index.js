@@ -63,7 +63,7 @@ const NewTaste = () => {
             key={index}
             type="product"
             rating={item.rate}
-            onPress={() => navigation.navigate('FoodDetail')}
+            onPress={() => navigation.navigate('FoodDetail', item)}
             image={{uri: item.picturePath}}
             name={item.name}
             price={item.price}
@@ -91,7 +91,7 @@ const Popular = () => {
             key={index}
             type="product"
             rating={item.rate}
-            onPress={() => navigation.navigate('FoodDetail')}
+            onPress={() => navigation.navigate('FoodDetail', item)}
             image={{uri: item.picturePath}}
             name={item.name}
             price={item.price}
@@ -119,7 +119,7 @@ const Recommended = () => {
             key={index}
             type="product"
             rating={item.rate}
-            onPress={() => navigation.navigate('FoodDetail')}
+            onPress={() => navigation.navigate('FoodDetail', item)}
             image={{uri: item.picturePath}}
             name={item.name}
             price={item.price}

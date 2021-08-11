@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,12 +7,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {FoodDummy1, IcBackWhite} from '../../assets';
-import {Rating, Button, Counter} from '../../components';
+import {Rating, Button, Counter, Number} from '../../components';
 
-const FoodDetail = ({navigation}) => {
+const FoodDetail = ({navigation, route}) => {
+  const {name, picturePath, rate, description, ingredients, price} =
+    route.params;
+  const [totalItem, setTotalItem] = useState(1);
+
+  const onCounterChange = value => {
+    setTotalItem(value);
+  };
+
   return (
     <View style={styles.page}>
-      <ImageBackground source={FoodDummy1} style={styles.cover}>
+      <ImageBackground source={{uri: picturePath}} style={styles.cover}>
         <TouchableOpacity
           style={styles.back}
           activeOpacity={0.7}
@@ -24,23 +32,19 @@ const FoodDetail = ({navigation}) => {
         <View style={styles.mainContent}>
           <View style={styles.productContainer}>
             <View>
-              <Text style={styles.title}>Cherry Healthy</Text>
-              <Rating />
+              <Text style={styles.title}>{name}</Text>
+              <Rating number={rate} />
             </View>
-            <Counter />
+            <Counter onValueChange={onCounterChange} />
           </View>
-          <Text style={styles.desc}>
-            Makanan khas Bandung yang cukup sering dipesan oleh anak muda dengan
-            pola makan yang cukup tinggi dengan mengutamakan diet yang sehat dan
-            teratur.
-          </Text>
+          <Text style={styles.desc}>{description}</Text>
           <Text style={styles.label}>Ingredients:</Text>
-          <Text style={styles.desc}>Seledri, telur, blueberry, madu.</Text>
+          <Text style={styles.desc}>{ingredients}</Text>
         </View>
         <View style={styles.footer}>
           <View style={styles.priceContainer}>
             <Text style={styles.labelTotal}>Total Price:</Text>
-            <Text style={styles.priceTotal}>IDR 12.289.000</Text>
+            <Number number={totalItem * price} style={styles.priceTotal} />
           </View>
           <View style={styles.button}>
             <Button
