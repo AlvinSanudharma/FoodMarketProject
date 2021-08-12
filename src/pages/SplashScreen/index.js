@@ -17,7 +17,7 @@ const SplashScreen = ({navigation}) => {
         }
       });
     }, 2000);
-  }, [navigation]);
+  }, []);
 
   return (
     <View

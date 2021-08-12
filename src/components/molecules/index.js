@@ -12,6 +12,7 @@ import ProfileTabSection from './ProfileTabSection';
 import ItemListMenu from './ItemListMenu';
 import Loading from './Loading';
 import Number from './Number';
+import FoodCardSkeleton from './FoodCardSkeleton';
 
 export {
   Header,
@@ -28,4 +29,5 @@ export {
   ItemListMenu,
   Loading,
   Number,
+  FoodCardSkeleton,
 };
