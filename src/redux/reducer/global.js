@@ -9,7 +9,7 @@ export function globalReducer(state = initialGLobalState, action) {
     case 'SET_ERROR':
       return {
         ...state,
-        isError: action.value.isError,
+        isError: action.value,
         message: action.value.message,
       };
     case 'SET_LOADING':

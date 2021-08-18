@@ -1,11 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {Number} from '../../molecules';
 
-const ItemValue = ({label, value, valueColor = '#020202'}) => {
+const ItemValue = ({label, value, valueColor = '#020202', type}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value(valueColor)}>{value}</Text>
+      {type == 'currency' ? (
+        <Number style={styles.value(valueColor)} number={value} />
+      ) : (
+        <Text style={styles.value(valueColor)}>{value}</Text>
+      )}
     </View>
   );
 };

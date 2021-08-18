@@ -27,35 +27,20 @@ import {getFoodData} from '../../redux/action';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {food} = useSelector(state => state.homeReducer);
-  const [isLoading, setIsLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     dispatch(getFoodData());
-    setIsLoading(false);
-  }, [isLoading]);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
   }, []);
 
   return (
-    <ScrollView
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
+    <ScrollView>
       <View style={styles.page}>
         <HomeProfile />
         <View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={styles.foodCardContainer}>
               <Gap width={24} />
-              {isLoading ? (
+              {food.length < 1 ? (
                 <FoodCardSkeleton />
               ) : (
                 food.map((itemFood, index) => {

@@ -33,7 +33,7 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.name}>{name}</Text>
-              <Text style={styles.price}>IDR {price}</Text>
+              <Number number={price} style={styles.price} />
             </View>
             <Text style={styles.items}>{items} Items</Text>
           </>
@@ -44,25 +44,31 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.name}>{name}</Text>
-              <Text style={styles.price}>
-                {items} items . IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.price}>{items} items</Text>
+                <View style={styles.dot} />
+                <Number style={styles.price} number={price} />
+              </View>
             </View>
           </>
         );
         break;
       case 'past-orders':
+        const newDate = new Date(date).toDateString();
+
         return (
           <>
             <View style={styles.content}>
               <Text style={styles.name}>{name}</Text>
-              <Text style={styles.price}>
-                {items} items . IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.price}>{items} items</Text>
+                <View style={styles.dot} />
+                <Number style={styles.price} number={price} />
+              </View>
             </View>
             <View>
-              <Text style={styles.date}>{date}</Text>
-              <Text style={styles.status}>{status}</Text>
+              <Text style={styles.date}>{newDate}</Text>
+              <Text style={styles.status(status)}>{status}</Text>
             </View>
           </>
         );
@@ -129,10 +135,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     color: '#8D92A3',
   },
-  status: {
+  status: status => ({
     fontSize: 10,
     fontFamily: 'Poppins-Regular',
-    color: '#D9435E',
+    color: status === 'CANCELLED' ? '#D9435E' : '#1ABC9C',
     marginTop: 2,
+  }),
+  row: {flexDirection: 'row', alignItems: 'center'},
+  dot: {
+    width: 3,
+    height: 3,
+    borderRadius: 3,
+    backgroundColor: '#8D92A3',
+    marginHorizontal: 4,
   },
 });
