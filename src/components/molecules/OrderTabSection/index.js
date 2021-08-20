@@ -50,11 +50,11 @@ const inProgress = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {inProgress} = useSelector(state => state.orderReducer);
-  // console.log(state);
+
   useEffect(() => {
     dispatch(getInProgress());
   }, []);
-  // console.log(inProgress);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
@@ -64,7 +64,7 @@ const inProgress = () => {
               key={order.id}
               type="in-progress"
               items={order.quantity}
-              onPress={() => navigation.navigate('OrderDetail')}
+              onPress={() => navigation.navigate('OrderDetail', order)}
               image={{uri: order.food.picturePath}}
               name={order.food.name}
               price={order.total}
@@ -80,11 +80,11 @@ const pastOrders = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {pastOrders} = useSelector(state => state.orderReducer);
-  // console.log(state);
+
   useEffect(() => {
     dispatch(getPastOrders());
   }, []);
-  // console.log(pastOrders);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
@@ -96,7 +96,7 @@ const pastOrders = () => {
               status={order.status}
               date={order.created_at}
               items={order.quantity}
-              onPress={() => navigation.navigate('OrderDetail')}
+              onPress={() => navigation.navigate('OrderDetail', order)}
               image={{uri: order.food.picturePath}}
               name={order.food.name}
               price={order.total}

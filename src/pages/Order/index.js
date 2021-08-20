@@ -11,7 +11,6 @@ const Order = ({navigation}) => {
 
   useEffect(() => {
     dispatch(getOrders());
-    // console.log(orders);
   }, []);
 
   return (

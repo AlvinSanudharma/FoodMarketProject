@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {API_HOST} from '../../config';
-import {getData} from '../../utils';
+import {getData, showMessage} from '../../utils';
 
 export const getOrders = () => dispatch => {
   getData('token').then(response => {
@@ -11,11 +11,10 @@ export const getOrders = () => dispatch => {
         },
       })
       .then(response => {
-        // console.info(response.data);
         dispatch({type: 'SET_ORDERS', value: response.data.data.data});
       })
-      .catch(error => {
-        console.info(error);
+      .catch(() => {
+        showMessage('Something When Wrong');
       });
   });
 };
@@ -52,8 +51,8 @@ export const getInProgress = () => dispatch => {
           });
         }),
       )
-      .catch(error => {
-        console.info(error);
+      .catch(() => {
+        showMessage('Something When Wrong');
       });
   });
 };
@@ -75,8 +74,6 @@ export const getPastOrders = () => dispatch => {
       ])
       .then(
         axios.spread((response1, response2) => {
-          // console.info(response1.data);
-          // console.info(response2.data);
           const cancelled = response1.data.data.data;
           const delivered = response2.data.data.data;
           dispatch({
@@ -85,8 +82,8 @@ export const getPastOrders = () => dispatch => {
           });
         }),
       )
-      .catch(error => {
-        console.info(error);
+      .catch(() => {
+        showMessage('Something When Wrong');
       });
   });
 };

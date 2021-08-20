@@ -54,7 +54,7 @@ const ItemListFood = ({
         );
         break;
       case 'past-orders':
-        const newDate = new Date(date).toDateString();
+        const formatedDate = new Date(date * 1000).toDateString();
 
         return (
           <>
@@ -67,7 +67,7 @@ const ItemListFood = ({
               </View>
             </View>
             <View>
-              <Text style={styles.date}>{newDate}</Text>
+              <Text style={styles.date}>{formatedDate}</Text>
               <Text style={styles.status(status)}>{status}</Text>
             </View>
           </>
