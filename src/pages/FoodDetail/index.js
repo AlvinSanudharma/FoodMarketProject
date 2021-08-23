@@ -6,7 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {FoodDummy1, IcBackWhite} from '../../assets';
+import {IcBackWhite} from '../../assets';
 import {Rating, Button, Counter, Number} from '../../components';
 import {getData} from '../../utils';
 

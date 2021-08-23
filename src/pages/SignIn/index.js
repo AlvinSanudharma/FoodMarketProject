@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import axios from 'axios';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {Header, TextInput, Button, Gap} from '../../components';
 import {useForm} from '../../utils';
-import {setLoading, signInAction, signUpAction} from '../../redux/action';
+import {signInAction} from '../../redux/action';
 
 const SignIn = ({navigation}) => {
   const [form, setForm] = useForm({

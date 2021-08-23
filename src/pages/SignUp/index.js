@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {useDispatch} from 'react-redux';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {Header, Button, TextInput, Gap} from '../../components';
 import {showMessage, useForm} from '../../utils';
 

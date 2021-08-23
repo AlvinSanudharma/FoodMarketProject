@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import axios from 'axios';
 import {
   Header,
   ItemListFood,
@@ -7,8 +8,6 @@ import {
   Button,
   Loading,
 } from '../../components';
-import {FoodDummy1} from '../../assets';
-import axios from 'axios';
 import {WebView} from 'react-native-webview';
 import {API_HOST} from '../../config';
 import {getData, showMessage} from '../../utils';

@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {Header, ItemListFood, ItemValue, Button, Gap} from '../../components';
-import {FoodDummy1} from '../../assets';
 import axios from 'axios';
 import {API_HOST} from '../../config';
 import {getData, showMessage} from '../../utils';

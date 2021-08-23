@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {ProfileDummy} from '../../assets';
 import {ProfileTabSection} from '../../components';
 import {getData} from '../../utils';
 

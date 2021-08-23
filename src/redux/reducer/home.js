@@ -27,6 +27,11 @@ export function homeReducer(state = initialHomeState, action) {
         ...state,
         recommended: action.value,
       };
+    case 'RESET_FOOD':
+      return {
+        ...state,
+        food: initialHomeState.food,
+      };
     default:
       return state;
   }

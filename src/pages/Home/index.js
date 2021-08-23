@@ -1,20 +1,7 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  RefreshControl,
-} from 'react-native';
+import {ScrollView, StyleSheet, View, RefreshControl} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  FoodDummy1,
-  FoodDummy2,
-  FoodDummy3,
-  FoodDummy4,
-  ProfileDummy,
-} from '../../assets';
+import axios from 'axios';
 import {
   FoodCard,
   Gap,
@@ -22,18 +9,38 @@ import {
   HomeProfile,
   FoodCardSkeleton,
 } from '../../components';
+import {API_HOST} from '../../config';
 import {getFoodData} from '../../redux/action';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {food} = useSelector(state => state.homeReducer);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     dispatch(getFoodData());
   }, []);
 
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    dispatch({type: 'RESET_FOOD'});
+
+    axios
+      .get(`${API_HOST.url}/food`)
+      .then(response => {
+        dispatch({type: 'SET_FOOD', value: response.data.data.data});
+        setRefreshing(false);
+      })
+      .catch(() => {
+        showMessage('Data List Produk Gagal Diambil!');
+      });
+  }, []);
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.page}>
         <HomeProfile />
         <View>

@@ -1,10 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import Axios from 'axios';
 import {setLoading, signUpAction} from '../../redux/action';
 import {Header, TextInput, Gap, Button, Select} from '../../components';
-import {useForm, showMessage} from '../../utils';
+import {useForm} from '../../utils';
 
 const SignUpAddress = ({navigation}) => {
   const [form, setForm] = useForm({
