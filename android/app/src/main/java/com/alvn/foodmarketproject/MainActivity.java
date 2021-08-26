@@ -1,4 +1,4 @@
-package com.foodmarketproject;
+package com.alvn.foodmarketproject;
 
 import com.facebook.react.ReactActivity;
 
