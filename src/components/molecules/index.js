@@ -13,6 +13,7 @@ import ItemListMenu from './ItemListMenu';
 import Loading from './Loading';
 import Number from './Number';
 import FoodCardSkeleton from './FoodCardSkeleton';
+import ItemValue from './ItemValue';
 
 export {
   Header,
@@ -30,4 +31,5 @@ export {
   Loading,
   Number,
   FoodCardSkeleton,
+  ItemValue,
 };

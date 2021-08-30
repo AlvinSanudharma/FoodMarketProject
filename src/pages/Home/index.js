@@ -22,8 +22,8 @@ const Home = ({navigation}) => {
   }, []);
 
   const onRefresh = useCallback(() => {
-    setRefreshing(true);
     dispatch({type: 'RESET_FOOD'});
+    setRefreshing(true);
 
     axios
       .get(`${API_HOST.url}/food`)
@@ -39,7 +39,11 @@ const Home = ({navigation}) => {
   return (
     <ScrollView
       refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={['#FFC700']}
+        />
       }>
       <View style={styles.page}>
         <HomeProfile />

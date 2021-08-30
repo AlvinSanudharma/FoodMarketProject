@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Number} from '../../molecules';
+import Number from '../Number';
 
 const ItemValue = ({label, value, valueColor = '#020202', type}) => {
   return (

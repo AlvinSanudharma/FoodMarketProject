@@ -27,7 +27,6 @@ const ItemListFood = ({
             <Rating number={rating} />
           </>
         );
-        break;
       case 'order-summary':
         return (
           <>
@@ -38,7 +37,6 @@ const ItemListFood = ({
             <Text style={styles.items}>{items} Items</Text>
           </>
         );
-        break;
       case 'in-progress':
         return (
           <>
@@ -52,7 +50,6 @@ const ItemListFood = ({
             </View>
           </>
         );
-        break;
       case 'past-orders':
         const formatedDate = new Date(date * 1000).toDateString();
 
@@ -66,13 +63,12 @@ const ItemListFood = ({
                 <Number style={styles.price} number={price} />
               </View>
             </View>
-            <View>
+            <View style={styles.textWrapper}>
               <Text style={styles.date}>{formatedDate}</Text>
               <Text style={styles.status(status)}>{status}</Text>
             </View>
           </>
         );
-        break;
 
       default:
         return (
@@ -84,7 +80,6 @@ const ItemListFood = ({
             <Rating number={rating} />
           </>
         );
-        break;
     }
   };
 
@@ -148,5 +143,9 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: '#8D92A3',
     marginHorizontal: 4,
+  },
+  textWrapper: {
+    flex: 1,
+    alignItems: 'flex-end',
   },
 });

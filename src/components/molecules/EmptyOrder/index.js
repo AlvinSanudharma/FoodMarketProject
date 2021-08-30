@@ -1,12 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {IlEmptyOrder} from '../../../assets';
 import {Button, Gap} from '../../../components/atoms';
 
-const EmptyOrder = () => {
-  const navigation = useNavigation();
-
+const EmptyOrder = ({navigation}) => {
   return (
     <View style={styles.page}>
       <IlEmptyOrder />

@@ -36,14 +36,14 @@ const OrderSummary = ({navigation, route}) => {
           setIsPaymentOpen(true);
           setPaymentUrl(response.data.data.payment_url);
         })
-        .catch(error => {
+        .catch(() => {
           showMessage('Transaction Failed');
         });
     });
   };
 
   const onNavChange = state => {
-    const title = 'Example Domain';
+    const title = 'Laravel';
 
     if (state.title === title) {
       navigation.reset({index: 0, routes: [{name: 'SuccessOrder'}]});
