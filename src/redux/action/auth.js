@@ -1,10 +1,7 @@
 import axios from 'axios';
 import {showMessage, storeData} from '../../utils';
 import {setLoading} from './global';
-
-const API_HOST = {
-  url: 'http://server-foodmarket.web.id/api',
-};
+import {API_HOST} from '../../config/API';
 
 export const signUpAction =
   (dataRegister, photoReducer, navigation) => dispatch => {
