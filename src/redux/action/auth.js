@@ -25,7 +25,7 @@ export const signUpAction =
               },
             })
             .then(response => {
-              profile.profile_photo_url = `http://server-foodmarket.web.id/storage/${response.data.data[0]}`;
+              profile.profile_photo_url = `https://server-foodmarket.web.id/storage/${response.data.data[0]}`;
 
               storeData('userProfile', profile);
               navigation.reset({index: 0, routes: [{name: 'SuccessSignUp'}]});
